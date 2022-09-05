@@ -536,7 +536,12 @@
       #define MULTI_MODE_DRIVE_M3_MAX   1000
       #define MULTI_MODE_DRIVE_M3_RATE  450
   #endif
-
+  
+  #ifdef CONTROL_PWM_RIGHT
+    #define DEBUG_SERIAL_USART2         // left sensor cable debug
+  #else
+    #define DEBUG_SERIAL_USART3         // right sensor cable debug
+  #endif
 #endif
 
 // Multiple tap detection: default DOUBLE Tap on Brake pedal (4 pulses)
