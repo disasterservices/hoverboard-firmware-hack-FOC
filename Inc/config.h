@@ -165,9 +165,9 @@
 
 // Extra functionality
 // #define STANDSTILL_HOLD_ENABLE          // [-] Flag to hold the position when standtill is reached. Only available and makes sense for VOLTAGE or TORQUE mode.
-// #define ELECTRIC_BRAKE_ENABLE           // [-] Flag to enable electric brake and replace the motor "freewheel" with a constant braking when the input torque request is 0. Only available and makes sense for TORQUE mode.
-// #define ELECTRIC_BRAKE_MAX    100       // (0, 500) Maximum electric brake to be applied when input torque request is 0 (pedal fully released).
-// #define ELECTRIC_BRAKE_THRES  120       // (0, 500) Threshold below at which the electric brake starts engaging.
+#define ELECTRIC_BRAKE_ENABLE           // [-] Flag to enable electric brake and replace the motor "freewheel" with a constant braking when the input torque request is 0. Only available and makes sense for TORQUE mode.
+#define ELECTRIC_BRAKE_MAX    100       // (0, 500) Maximum electric brake to be applied when input torque request is 0 (pedal fully released).
+#define ELECTRIC_BRAKE_THRES  120       // (0, 500) Threshold below at which the electric brake starts engaging.
 // ########################### END OF MOTOR CONTROL ########################
 
 
@@ -610,11 +610,11 @@
   #define CONTROL_PWM_RIGHT   0         // use RC PWM as input on the RIGHT cable.  Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART3!
 
   #define PRI_INPUT1          0, -1000, 0, 1000,   0    // Disabled. TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
-  #define PRI_INPUT2          2,  1000, 0,  1000, 100    // Active.   TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
-  #define INPUT_BRK           -1000      // (-1000 - 0) Change this value to adjust the braking amount
+  #define PRI_INPUT2          2, -1000, 0,  1000, 100    // Active.   TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section. bis jetzt fehlte das Minuszeichen
+  #define INPUT_BRK           -500      // (-1000 - 0) Change this value to adjust the braking amount
 
   #define FILTER              1553      // 0.1f [-] fixdt(0,16,16) lower value == softer filter [0, 65535] = [0.0 - 1.0].
-  #define SPEED_COEFFICIENT   1638     // 1.0f [-] fixdt(1,16,14) higher value == stronger. [0, 65535] = [-2.0 - 2.0]. In this case 16384 = 1.0 * 2^14
+  #define SPEED_COEFFICIENT   10000     // 1.0f [-] fixdt(1,16,14) higher value == stronger. [0, 65535] = [-2.0 - 2.0]. In this case 16384 = 1.0 * 2^14. bis jetzt 1638
   #define STEER_COEFFICIENT   0         // 1.0f [-] fixdt(1,16,14) higher value == stronger. [0, 65535] = [-2.0 - 2.0]. In this case 16384 = 1.0 * 2^14. If you do not want any steering, set it to 0.
   #define INVERT_R_DIRECTION
   #define INVERT_L_DIRECTION
